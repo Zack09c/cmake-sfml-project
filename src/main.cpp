@@ -2,17 +2,15 @@
 
 int main()
 {
-    auto window = sf::RenderWindow(sf::VideoMode({1920u, 1080u}), "CMake SFML Project");
-    window.setFramerateLimit(144);
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Hello")
 
-    while (window.isOpen())
+    sf::Event event;
+
+    while(window.isOpen())
     {
-        while (const std::optional event = window.pollEvent())
+        while(window.pollEvents(event))
         {
-            if (event->is<sf::Event::Closed>())
-            {
-                window.close();
-            }
+            if(event.type == sf::Event::Closed) window.close();
         }
 
         window.clear();
